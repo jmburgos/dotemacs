@@ -1,0 +1,28 @@
+#+TITLE: My .emacs file in org - mode
+#+STARTUP: overview
+#+PROPERTY: header-args  :tangle ~/.emacs.d/init.el
+
+* Package management
+#+begin_src emacs-lisp
+(setq load-prefer-newer t) ; Do not use outdated compiled files
+
+(require 'package)
+(setq package-archives '(
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("org" . "http://orgmode.org/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+			 ("elpy" . "http://jorgenschaefer.github.io/packages/")
+                         ))
+
+(package-initialize)
+
+;; Load use-package
+(require 'use-package)
+;(setq-default use-package-always-defer t
+;                use-package-always-ensure t)
+
+(use-package paradox
+  :config
+  (paradox-enable))
+#+end_src
